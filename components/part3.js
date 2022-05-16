@@ -1,159 +1,201 @@
-import { Container, Grid, Grow } from "@mui/material";
-import React from "react";
-import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
+import { CircularProgress, Container, Grid, Zoom } from "@mui/material";
+import React, { useState, useRef, useEffect } from "react";
+import { Card, ListGroup } from "react-bootstrap";
 import CardProduit from "./CardProduit";
-const callouts = [
-	{
-		name: "Desk and Office",
-		description: "Work from home accessories",
-		imageSrc:
-			"https://tailwindui.com/img/ecommerce-images/home-page-02-edition-01.jpg",
-		imageAlt:
-			"Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug.",
-		href: "#",
-	},
-	{
-		name: "Self-Improvement",
-		description: "Journals and note-taking",
-		imageSrc:
-			"https://tailwindui.com/img/ecommerce-images/home-page-02-edition-02.jpg",
-		imageAlt:
-			"Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant.",
-		href: "#",
-	},
-	{
-		name: "Travel",
-		description: "Daily commute essentials",
-		imageSrc:
-			"https://tailwindui.com/img/ecommerce-images/home-page-02-edition-03.jpg",
-		imageAlt:
-			"Collection of four insulated travel bottles on wooden shelf.",
-		href: "#",
-	},
-];
-export default function Part3() {
+
+export default function Part3({ refCat, refProd }) {
+	const [produits, setProduits] = useState([]);
+	const [categorie, setCategorie] = useState();
+	const [isIntersecting, setIntersecting] = useState(false);
+	const [loading, setLoading] = useState(false);
+	const ref = useRef();
+
+	useEffect(() => {
+		const prodFetch = async () => {
+			const response = await fetch(process.env.API + "produits", {
+				method: "GET",
+				headers: {
+					"Content-Type": "application/json",
+					Accept: "application/json",
+				},
+			});
+
+			const result = await response.json();
+			setProduits(result);
+		};
+
+		prodFetch();
+
+		const observer = new IntersectionObserver(([entry], observer) => {
+			setIntersecting(entry.isIntersecting);
+			if (entry.intersectionRatio > 0) observer.unobserve(ref.current);
+		});
+
+		observer.observe(ref.current);
+
+		return () => {
+			observer.disconnect();
+		};
+	}, []);
+
+	const handleCategorie = (cat) => {
+		if (categorie == cat) setCategorie();
+		else setCategorie(cat);
+
+		setLoading(true);
+
+		setTimeout(() => {
+			setLoading(false);
+		}, 1000);
+	};
+
 	return (
-		<>
-			<div style={{ marginLeft: "5em" }}>
-				<Grid container>
-					<Grid item xs={12} md={4}>
-						<Grow
-							in={true}
-							style={{ transformOrigin: "0 0 0" }}
-							{...{ timeout: 1000 }}
-						>
+		<div>
+			<center>
+				<Grid container style={{ marginBottom: "5em" }} ref={refCat}>
+					<Grid
+						item
+						xs={12}
+						md={4}
+						className={
+							categorie
+								? categorie == "Pots de Fleurs"
+									? "clickedCat"
+									: "blurryCat"
+								: "category"
+						}
+					>
+						<Zoom in={isIntersecting} style={{ transitionDelay: "100ms" }}>
 							<Card
-								className="category"
 								style={{ width: "18rem" }}
+								ref={ref}
+								onClick={() => handleCategorie("Pots de Fleurs")}
 							>
 								<Card.Img
 									variant="top"
 									src="https://static.cotemaison.fr/medias_11964/w_600,h_600,c_fill,g_north/v1617543550/la-cuisine-imite-le-bois-a-la-perfection_6125959.jpg"
 								/>
 								<Card.Body>
-									<Card.Title>Cuisine</Card.Title>
+									<Card.Title>Pots de Fleurs</Card.Title>
 									<Card.Text>
-										Some quick example text to build on the
-										card title and make up the bulk of the
-										card's content.
+										Some quick example text to build on the card title and make
+										up the bulk of the card's content.
 									</Card.Text>
 								</Card.Body>
 								<ListGroup className="list-group-flush"></ListGroup>
 							</Card>
-						</Grow>
+						</Zoom>
 					</Grid>
-					<Grid item xs={12} md={4}>
-						<Grow
-							in={true}
-							style={{ transformOrigin: "0 0 0" }}
-							{...{ timeout: 2000 }}
-						>
+					<Grid
+						item
+						xs={12}
+						md={4}
+						className={
+							categorie
+								? categorie == "test1"
+									? "clickedCat"
+									: "blurryCat"
+								: "category"
+						}
+					>
+						<Zoom in={isIntersecting} style={{ transitionDelay: "300ms" }}>
 							<Card
-								className="category"
 								style={{ width: "18rem" }}
+								onClick={() => handleCategorie("test1")}
 							>
 								<Card.Img
 									variant="top"
 									src="https://static.cotemaison.fr/medias_11964/w_600,h_600,c_fill,g_north/v1617543550/la-cuisine-imite-le-bois-a-la-perfection_6125959.jpg"
 								/>
 								<Card.Body>
-									<Card.Title>Jardin</Card.Title>
+									<Card.Title>test1</Card.Title>
 									<Card.Text>
-										Some quick example text to build on the
-										card title and make up the bulk of the
-										card's content.
+										Some quick example text to build on the card title and make
+										up the bulk of the card's content.
 									</Card.Text>
 								</Card.Body>
 								<ListGroup className="list-group-flush"></ListGroup>
 							</Card>
-						</Grow>
+						</Zoom>
 					</Grid>
 
-					<Grid item xs={12} md={4}>
-						<Grow
-							in={true}
-							style={{ transformOrigin: "0 0 0" }}
-							{...{ timeout: 3000 }}
-						>
+					<Grid
+						item
+						xs={12}
+						md={4}
+						className={
+							categorie
+								? categorie == "test2"
+									? "clickedCat"
+									: "blurryCat"
+								: "category"
+						}
+					>
+						<Zoom in={isIntersecting} style={{ transitionDelay: "500ms" }}>
 							<Card
 								style={{ width: "18rem" }}
-								className="category"
+								onClick={() => handleCategorie("test2")}
 							>
 								<Card.Img
 									variant="top"
 									src="https://static.cotemaison.fr/medias_11964/w_600,h_600,c_fill,g_north/v1617543550/la-cuisine-imite-le-bois-a-la-perfection_6125959.jpg"
 								/>
 								<Card.Body>
-									<Card.Title>Cuisine</Card.Title>
+									<Card.Title>test2</Card.Title>
 									<Card.Text>
-										Some quick example text to build on the
-										card title and make up the bulk of the
-										card's content.
+										Some quick example text to build on the card title and make
+										up the bulk of the card's content.
 									</Card.Text>
 								</Card.Body>
 								<ListGroup className="list-group-flush"></ListGroup>
 							</Card>
-						</Grow>
+						</Zoom>
 					</Grid>
 				</Grid>
-			</div>
+			</center>
 
 			<hr />
 
-			<Container maxWidth="md">
-				<Grid container>
-					<Grid item md={4} xs={12}>
-						<CardProduit />
-						<br />
-					</Grid>
+			<center>
+				<h1>Produits</h1>
+			</center>
 
-					<Grid item md={4}></Grid>
-					<Grid item md={4} xs={12}>
-						<CardProduit />
-						<br />
-					</Grid>
-					<Grid item md={4} xs={12}>
-						<CardProduit />
-						<br />
-					</Grid>
+			<br ref={refProd} />
 
-					<Grid item md={4}></Grid>
-					<Grid item md={4} xs={12}>
-						<CardProduit />
-						<br />
-					</Grid>
-					<Grid item md={4} xs={12}>
-						<CardProduit />
-						<br />
-					</Grid>
+			{loading ? (
+				<center>
+					<CircularProgress />
+				</center>
+			) : (
+				<Zoom in={isIntersecting} style={{ transitionDelay: "300ms" }}>
+					<Container maxWidth="md">
+						<Grid container>
+							{produits.map((val, index) => {
+								return (
+									<>
+										{categorie && val.categorie.trim() !== categorie ? (
+											""
+										) : (
+											<>
+												<Grid item md={4} xs={12}>
+													<CardProduit data={val} />
+													<br />
+												</Grid>
 
-					<Grid item md={4}></Grid>
-					<Grid item md={4} xs={12}>
-						<CardProduit />
-						<br />
-					</Grid>
-				</Grid>
-			</Container>
-		</>
+												{index == 0 || index % 2 == 0 ? (
+													<Grid item md={4}></Grid>
+												) : (
+													""
+												)}
+											</>
+										)}
+									</>
+								);
+							})}
+						</Grid>
+					</Container>
+				</Zoom>
+			)}
+		</div>
 	);
 }

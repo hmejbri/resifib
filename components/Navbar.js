@@ -10,7 +10,7 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 
-const ResponsiveAppBar = () => {
+const ResponsiveAppBar = ({ refCat, refProd }) => {
 	const [anchorElNav, setAnchorElNav] = React.useState(null);
 
 	const handleOpenNavMenu = (event) => {
@@ -19,6 +19,14 @@ const ResponsiveAppBar = () => {
 
 	const handleCloseNavMenu = () => {
 		setAnchorElNav(null);
+	};
+
+	const scrollToCategories = () => {
+		refCat.current.scrollIntoView({ behavior: "smooth", block: "center" });
+	};
+
+	const scrollToProduits = () => {
+		refProd.current.scrollIntoView({ behavior: "smooth", block: "center" });
 	};
 
 	return (
@@ -70,27 +78,33 @@ const ResponsiveAppBar = () => {
 						>
 							<MenuItem
 								key="Accueil"
-								onClick={handleCloseNavMenu}
+								onClick={() => {
+									handleCloseNavMenu();
+									scrollToCategories();
+								}}
 							>
-								<Typography textAlign="center">
-									Accueil
-								</Typography>
+								<Typography textAlign="center">Accueil</Typography>
+							</MenuItem>
+							<MenuItem
+								key="Catégories"
+								onClick={() => {
+									handleCloseNavMenu();
+									scrollToCategories();
+								}}
+							>
+								<Typography textAlign="center">Catégories</Typography>
 							</MenuItem>
 							<MenuItem
 								key="Produits"
-								onClick={handleCloseNavMenu}
+								onClick={() => {
+									handleCloseNavMenu();
+									scrollToProduits();
+								}}
 							>
-								<Typography textAlign="center">
-									Produits
-								</Typography>
+								<Typography textAlign="center">Produits</Typography>
 							</MenuItem>
-							<MenuItem
-								key="Contacter"
-								onClick={handleCloseNavMenu}
-							>
-								<Typography textAlign="center">
-									Contacter
-								</Typography>
+							<MenuItem key="Contacter" onClick={handleCloseNavMenu}>
+								<Typography textAlign="center">Contacter</Typography>
 							</MenuItem>
 						</Menu>
 					</Box>
@@ -114,7 +128,10 @@ const ResponsiveAppBar = () => {
 					>
 						<Button
 							key="Accueil"
-							onClick={handleCloseNavMenu}
+							onClick={() => {
+								handleCloseNavMenu();
+								window.scrollTo(0, 0);
+							}}
 							sx={{
 								my: 2,
 								color: "white",
@@ -124,8 +141,25 @@ const ResponsiveAppBar = () => {
 							Accueil
 						</Button>
 						<Button
+							key="Catégories"
+							onClick={() => {
+								handleCloseNavMenu();
+								scrollToCategories();
+							}}
+							sx={{
+								my: 2,
+								color: "white",
+								display: "block",
+							}}
+						>
+							Catégories
+						</Button>
+						<Button
 							key="Produits"
-							onClick={handleCloseNavMenu}
+							onClick={() => {
+								handleCloseNavMenu();
+								scrollToProduits();
+							}}
 							sx={{
 								my: 2,
 								color: "white",
