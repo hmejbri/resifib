@@ -103,9 +103,6 @@ const ResponsiveAppBar = ({ refCat, refProd }) => {
 							>
 								<Typography textAlign="center">Produits</Typography>
 							</MenuItem>
-							<MenuItem key="Contacter" onClick={handleCloseNavMenu}>
-								<Typography textAlign="center">Contacter</Typography>
-							</MenuItem>
 						</Menu>
 					</Box>
 					<Typography
@@ -167,17 +164,6 @@ const ResponsiveAppBar = ({ refCat, refProd }) => {
 							}}
 						>
 							Produits
-						</Button>
-						<Button
-							key="Contacter"
-							onClick={handleCloseNavMenu}
-							sx={{
-								my: 2,
-								color: "white",
-								display: "block",
-							}}
-						>
-							Contacter
 						</Button>
 					</Box>
 				</Toolbar>

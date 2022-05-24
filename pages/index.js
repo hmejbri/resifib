@@ -11,11 +11,9 @@ export default function Home() {
 		<div>
 			<ResponsiveAppBar refCat={refCat} refProd={refProd} />
 
-			<div>
-				<Part2 />
-			</div>
+			<Part2 />
 
-			<hr />
+			<br />
 
 			<center>
 				<h1>Catégories</h1>
