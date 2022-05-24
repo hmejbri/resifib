@@ -30,7 +30,7 @@ const ResponsiveAppBar = ({ refCat, refProd }) => {
 	};
 
 	return (
-		<AppBar style={{ backgroundColor: "#232A64" }}>
+		<AppBar style={{ backgroundColor: "rgba(0,0,0,0)", position: "absolute" }}>
 			<Container maxWidth="xl">
 				<Toolbar disableGutters>
 					<Typography
@@ -39,7 +39,15 @@ const ResponsiveAppBar = ({ refCat, refProd }) => {
 						component="div"
 						sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
 					>
-						RESIFIB
+						R
+						<Typography variant="h6" style={{ color: "#36ff6b" }}>
+							E
+						</Typography>
+						SIF
+						<Typography variant="h6" style={{ color: "#36ff6b" }}>
+							I
+						</Typography>
+						B
 					</Typography>
 
 					<Box
@@ -80,7 +88,7 @@ const ResponsiveAppBar = ({ refCat, refProd }) => {
 								key="Accueil"
 								onClick={() => {
 									handleCloseNavMenu();
-									scrollToCategories();
+									window.scrollTo(0, 0);
 								}}
 							>
 								<Typography textAlign="center">Accueil</Typography>
@@ -114,7 +122,15 @@ const ResponsiveAppBar = ({ refCat, refProd }) => {
 							display: { xs: "flex", md: "none" },
 						}}
 					>
-						RESIFIB
+						R
+						<Typography variant="h6" style={{ color: "#36ff6b" }}>
+							E
+						</Typography>
+						SIF
+						<Typography variant="h6" style={{ color: "#36ff6b" }}>
+							I
+						</Typography>
+						B
 					</Typography>
 					<Box
 						style={{ marginLeft: "70%" }}

@@ -1,17 +1,22 @@
 import { Button, Grid, Paper, Typography, Box } from "@mui/material";
 import React, { useState } from "react";
 import Modal from "@mui/material/Modal";
+
 const style = {
 	position: "absolute",
 	top: "50%",
 	left: "50%",
 	transform: "translate(-50%, -50%)",
-	width: 800,
 	bgcolor: "background.paper",
 	border: "2px solid #000",
 	boxShadow: 24,
 	p: 4,
+	width: {
+		xs: "400px",
+		md: "800px",
+	},
 };
+
 export default function CardProduit({ data }) {
 	const [elevation, setElevation] = useState(5);
 	const [open, setOpen] = React.useState(false);
@@ -20,7 +25,12 @@ export default function CardProduit({ data }) {
 	return (
 		<Paper
 			elevation={elevation}
-			style={{ width: "25em", height: "12em", borderRadius: "10px" }}
+			style={{ height: "12em", borderRadius: "10px" }}
+			sx={{
+				width: {
+					md: "25em",
+				},
+			}}
 			className="cardPaper"
 		>
 			<div>
@@ -51,20 +61,47 @@ export default function CardProduit({ data }) {
 							style={{
 								color: "gray",
 							}}
+							sx={{
+								marginLeft: {
+									xs: "1.5em",
+								},
+							}}
 						>
 							{new Date(data.date_modification).toDateString()}
 						</Typography>
 
-						<p
+						<br />
+
+						<Typography
+							variant="caption"
 							style={{
 								fontWeight: "bold",
 							}}
-							className="nomProduit"
+							sx={{
+								marginLeft: {
+									xs: "1.5em",
+								},
+							}}
 						>
 							{data.nom}
-						</p>
+						</Typography>
 
-						<p className="description">{data.description}</p>
+						<br />
+						<br />
+
+						<Typography
+							className="description"
+							variant="caption"
+							sx={{
+								marginLeft: {
+									xs: "1.5em",
+								},
+							}}
+						>
+							{data.description}
+						</Typography>
+
+						<br />
 
 						<center>
 							<Button
@@ -83,13 +120,15 @@ export default function CardProduit({ data }) {
 								<Box sx={style}>
 									<center>
 										<img
-											style={{ height: "300px" }}
+											style={{
+												height: "100%",
+												width: "100%",
+												maxHeight: "500px",
+											}}
 											src={data.url[0]}
 										></img>
 
-										<Typography sx={{ mt: 2 }}>
-											{data.description}
-										</Typography>
+										<Typography sx={{ mt: 2 }}>{data.description}</Typography>
 									</center>
 								</Box>
 							</Modal>
