@@ -1,5 +1,5 @@
-body {
-	background: rgb(147, 147, 146);
+#body {
+	background-color: #f6f3f3;
 }
 
 .category:hover {

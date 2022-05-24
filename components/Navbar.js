@@ -83,9 +83,7 @@ const ResponsiveAppBar = ({ refCat, refProd }) => {
 									scrollToCategories();
 								}}
 							>
-								<Typography textAlign="center">
-									Accueil
-								</Typography>
+								<Typography textAlign="center">Accueil</Typography>
 							</MenuItem>
 							<MenuItem
 								key="Catégories"
@@ -94,9 +92,7 @@ const ResponsiveAppBar = ({ refCat, refProd }) => {
 									scrollToCategories();
 								}}
 							>
-								<Typography textAlign="center">
-									Catégories
-								</Typography>
+								<Typography textAlign="center">Catégories</Typography>
 							</MenuItem>
 							<MenuItem
 								key="Produits"
@@ -105,17 +101,7 @@ const ResponsiveAppBar = ({ refCat, refProd }) => {
 									scrollToProduits();
 								}}
 							>
-								<Typography textAlign="center">
-									Produits
-								</Typography>
-							</MenuItem>
-							<MenuItem
-								key="Contacter"
-								onClick={handleCloseNavMenu}
-							>
-								<Typography textAlign="center">
-									Contacter
-								</Typography>
+								<Typography textAlign="center">Produits</Typography>
 							</MenuItem>
 						</Menu>
 					</Box>
@@ -178,17 +164,6 @@ const ResponsiveAppBar = ({ refCat, refProd }) => {
 							}}
 						>
 							Produits
-						</Button>
-						<Button
-							key="Contacter"
-							onClick={handleCloseNavMenu}
-							sx={{
-								my: 2,
-								color: "white",
-								display: "block",
-							}}
-						>
-							Contacter
 						</Button>
 					</Box>
 				</Toolbar>

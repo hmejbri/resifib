@@ -1,14 +1,16 @@
-import { CircularProgress, Container, Grid, Zoom } from "@mui/material";
+import { CircularProgress, Container, Grid, Pagination, Zoom } from "@mui/material";
 import React, { useState, useRef, useEffect } from "react";
 import { Card, ListGroup } from "react-bootstrap";
 import CardProduit from "./CardProduit";
 
 export default function Part3({ refCat, refProd }) {
 	const [produits, setProduits] = useState([]);
+	const [allProduits, setAllProduits] = useState([]);
 	const [categorie, setCategorie] = useState();
 	const [isIntersecting, setIntersecting] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const ref = useRef();
+	const nbProduits = 10;
 
 	useEffect(() => {
 		const prodFetch = async () => {
@@ -21,7 +23,8 @@ export default function Part3({ refCat, refProd }) {
 			});
 
 			const result = await response.json();
-			setProduits(result);
+			setAllProduits(result);
+			setProduits(result.slice(0, nbProduits));
 		};
 
 		prodFetch();
@@ -47,6 +50,12 @@ export default function Part3({ refCat, refProd }) {
 		setTimeout(() => {
 			setLoading(false);
 		}, 1000);
+	};
+
+	const changePage = (event, value) => {
+		setProduits(
+			allProduits.slice((value - 1) * nbProduits, (value - 1) * nbProduits + nbProduits)
+		);
 	};
 
 	return (
@@ -220,6 +229,14 @@ export default function Part3({ refCat, refProd }) {
 								);
 							})}
 						</Grid>
+						<br />
+						<div style={{ display: "flex", justifyContent: "center" }}>
+							<Pagination
+								color="primary"
+								count={Math.ceil(allProduits.length / nbProduits)}
+								onChange={changePage}
+							/>
+						</div>
 					</Container>
 				</Zoom>
 			)}

@@ -9,14 +9,12 @@ export default function Home() {
 	const refProd = useRef(null);
 
 	return (
-		<div>
+		<div id="body">
 			<ResponsiveAppBar refCat={refCat} refProd={refProd} />
 
-			<div>
-				<Part2 />
-			</div>
+			<Part2 />
 
-			<hr />
+			<br />
 
 			<center>
 				<h1>Catégories</h1>
@@ -26,6 +24,8 @@ export default function Home() {
 				<br />
 				<Part3 refCat={refCat} refProd={refProd} />
 			</div>
+
+			<br />
 
 			<Footer></Footer>
 		</div>
