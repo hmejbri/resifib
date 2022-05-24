@@ -12,32 +12,37 @@ export default function Part2() {
 		setParagraphs([
 			<Fade in={current === 0} {...{ timeout: 1000 }}>
 				<Typography variant="body1">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor lacus
-					nec lorem porta euismod. Nullam vel pellentesque lacus, eu fermentum neque.
-					Curabitur congue a leo semper sagittis. Cras bibendum sodales diam in imperdiet.
-					Fusce mollis consequat tempus. Nulla facilisi. Phasellus quis molestie nibh.
-					Praesent nec dictum orci. Nullam malesuada eleifend sollicitudin.
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+					Quisque tempor lacus nec lorem porta euismod. Nullam vel
+					pellentesque lacus, eu fermentum neque. Curabitur congue a
+					leo semper sagittis. Cras bibendum sodales diam in
+					imperdiet. Fusce mollis consequat tempus. Nulla facilisi.
+					Phasellus quis molestie nibh. Praesent nec dictum orci.
+					Nullam malesuada eleifend sollicitudin.
 				</Typography>
 			</Fade>,
 			<Fade in={current === 1} {...{ timeout: 1000 }}>
 				<Typography variant="body1">
-					Vivamus nec mi et risus lobortis posuere. Duis dictum elementum tincidunt. Etiam
-					ac est massa. Maecenas egestas risus eu ligula vestibulum, ut vestibulum nibh
-					venenatis. Donec commodo, justo eu consequat ultrices, nulla neque faucibus
-					nulla, a convallis massa odio fermentum sem. Nullam nec leo suscipit tellus
-					pretium ultrices. Aenean sagittis erat in augue condimentum malesuada. Nulla mi
-					felis, luctus et diam in, convallis lobortis ipsum. Pellentesque dignissim
-					rhoncus sapien, non eleifend tellus vestibulum vitae. In hac habitasse platea
-					dictumst.
+					Vivamus nec mi et risus lobortis posuere. Duis dictum
+					elementum tincidunt. Etiam ac est massa. Maecenas egestas
+					risus eu ligula vestibulum, ut vestibulum nibh venenatis.
+					Donec commodo, justo eu consequat ultrices, nulla neque
+					faucibus nulla, a convallis massa odio fermentum sem. Nullam
+					nec leo suscipit tellus pretium ultrices. Aenean sagittis
+					erat in augue condimentum malesuada. Nulla mi felis, luctus
+					et diam in, convallis lobortis ipsum. Pellentesque dignissim
+					rhoncus sapien, non eleifend tellus vestibulum vitae. In hac
+					habitasse platea dictumst.
 				</Typography>
 			</Fade>,
 			<Fade in={current === 2} {...{ timeout: 1000 }}>
 				<Typography variant="body1">
-					In eu diam dui. Vestibulum a vulputate risus. Cras id velit id eros placerat
-					viverra. Proin id vestibulum lacus. Fusce feugiat nec sapien non euismod.
-					Pellentesque dignissim ipsum a quam congue tempor. Quisque luctus luctus diam ut
-					facilisis. Nulla vitae eleifend dui. Fusce vel vestibulum neque, vitae
-					vestibulum enim.
+					In eu diam dui. Vestibulum a vulputate risus. Cras id velit
+					id eros placerat viverra. Proin id vestibulum lacus. Fusce
+					feugiat nec sapien non euismod. Pellentesque dignissim ipsum
+					a quam congue tempor. Quisque luctus luctus diam ut
+					facilisis. Nulla vitae eleifend dui. Fusce vel vestibulum
+					neque, vitae vestibulum enim.
 				</Typography>
 			</Fade>,
 		]);
@@ -62,11 +67,16 @@ export default function Part2() {
 									marginTop: "20%",
 								}}
 							>
-								<h1>Qui somme nous ?</h1>
 								<br />
-								<div style={{ height: "10em" }}>{paragraphs[current]}</div>
+								<div style={{ height: "10em" }}>
+									{paragraphs[current]}
+								</div>
 								<br />
-								<Button variant="contained" style={{ backgroundColor: "#232A64" }}>
+								<br />
+								<Button
+									variant="contained"
+									style={{ backgroundColor: "#232A64" }}
+								>
 									Voir plus..
 								</Button>
 							</div>

@@ -65,11 +65,16 @@ export default function Part3({ refCat, refProd }) {
 								: "category"
 						}
 					>
-						<Zoom in={isIntersecting} style={{ transitionDelay: "100ms" }}>
+						<Zoom
+							in={isIntersecting}
+							style={{ transitionDelay: "100ms" }}
+						>
 							<Card
 								style={{ width: "18rem" }}
 								ref={ref}
-								onClick={() => handleCategorie("Pots de Fleurs")}
+								onClick={() =>
+									handleCategorie("Pots de Fleurs")
+								}
 							>
 								<Card.Img
 									variant="top"
@@ -78,8 +83,9 @@ export default function Part3({ refCat, refProd }) {
 								<Card.Body>
 									<Card.Title>Pots de Fleurs</Card.Title>
 									<Card.Text>
-										Some quick example text to build on the card title and make
-										up the bulk of the card's content.
+										Some quick example text to build on the
+										card title and make up the bulk of the
+										card's content.
 									</Card.Text>
 								</Card.Body>
 								<ListGroup className="list-group-flush"></ListGroup>
@@ -98,7 +104,10 @@ export default function Part3({ refCat, refProd }) {
 								: "category"
 						}
 					>
-						<Zoom in={isIntersecting} style={{ transitionDelay: "300ms" }}>
+						<Zoom
+							in={isIntersecting}
+							style={{ transitionDelay: "300ms" }}
+						>
 							<Card
 								style={{ width: "18rem" }}
 								onClick={() => handleCategorie("test1")}
@@ -110,8 +119,9 @@ export default function Part3({ refCat, refProd }) {
 								<Card.Body>
 									<Card.Title>test1</Card.Title>
 									<Card.Text>
-										Some quick example text to build on the card title and make
-										up the bulk of the card's content.
+										Some quick example text to build on the
+										card title and make up the bulk of the
+										card's content.
 									</Card.Text>
 								</Card.Body>
 								<ListGroup className="list-group-flush"></ListGroup>
@@ -131,7 +141,10 @@ export default function Part3({ refCat, refProd }) {
 								: "category"
 						}
 					>
-						<Zoom in={isIntersecting} style={{ transitionDelay: "500ms" }}>
+						<Zoom
+							in={isIntersecting}
+							style={{ transitionDelay: "500ms" }}
+						>
 							<Card
 								style={{ width: "18rem" }}
 								onClick={() => handleCategorie("test2")}
@@ -143,8 +156,9 @@ export default function Part3({ refCat, refProd }) {
 								<Card.Body>
 									<Card.Title>test2</Card.Title>
 									<Card.Text>
-										Some quick example text to build on the card title and make
-										up the bulk of the card's content.
+										Some quick example text to build on the
+										card title and make up the bulk of the
+										card's content.
 									</Card.Text>
 								</Card.Body>
 								<ListGroup className="list-group-flush"></ListGroup>
@@ -173,16 +187,29 @@ export default function Part3({ refCat, refProd }) {
 							{produits.map((val, index) => {
 								return (
 									<>
-										{categorie && val.categorie.trim() !== categorie ? (
+										{categorie &&
+										val.categorie.trim() !== categorie ? (
 											""
 										) : (
 											<>
-												<Grid item md={4} xs={12}>
+												<Grid
+													item
+													md={4}
+													xs={12}
+													sx={{
+														marginLeft: {
+															xs: "20%",
+															sm: "30%",
+															md: "0%",
+														},
+													}}
+												>
 													<CardProduit data={val} />
 													<br />
 												</Grid>
 
-												{index == 0 || index % 2 == 0 ? (
+												{index == 0 ||
+												index % 2 == 0 ? (
 													<Grid item md={4}></Grid>
 												) : (
 													""
