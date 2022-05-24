@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import Footer from "../components/footer";
 import ResponsiveAppBar from "../components/Navbar";
 import Part2 from "../components/Part2";
 import Part3 from "../components/part3";
@@ -8,7 +9,7 @@ export default function Home() {
 	const refProd = useRef(null);
 
 	return (
-		<div>
+		<div id="body">
 			<ResponsiveAppBar refCat={refCat} refProd={refProd} />
 
 			<Part2 />
@@ -24,7 +25,9 @@ export default function Home() {
 				<Part3 refCat={refCat} refProd={refProd} />
 			</div>
 
-			<hr />
+			<br />
+
+			<Footer></Footer>
 		</div>
 	);
 }

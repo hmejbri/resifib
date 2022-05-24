@@ -1,11 +1,5 @@
-body {
-	background: rgb(243, 224, 206);
-	background: linear-gradient(
-		180deg,
-		rgba(243, 224, 206, 1) 0%,
-		rgba(251, 204, 156, 1) 50%,
-		rgba(252, 173, 93, 1) 100%
-	);
+#body {
+	background-color: #f6f3f3;
 }
 
 .category:hover {
@@ -26,14 +20,14 @@ body {
 .blurryCat {
 	filter: blur(4px);
 	-webkit-filter: blur(4px);
-  	transition: all 1s;
+	transition: all 1s;
 }
 
 .blurryCat:hover {
 	filter: blur(0px);
 	cursor: pointer;
 	-webkit-filter: blur(0px);
-  	transition: all 0.3s;
+	transition: all 0.3s;
 }
 
 .description {
@@ -71,4 +65,21 @@ body {
 	-webkit-box-orient: vertical;
 }
 
-h1 { color: #000000; font-family: 'Raleway',sans-serif; font-size: 62px; font-weight: 800; line-height: 72px; margin: 0 0 24px; text-align: center; text-transform: uppercase; }
+h1 {
+	color: #000000;
+	font-family: "Raleway", sans-serif;
+	font-size: 62px;
+	font-weight: 800;
+	line-height: 72px;
+	margin: 0 0 24px;
+	text-align: center;
+	text-transform: uppercase;
+}
+.footer {
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: #232a64;
+	color: white;
+	text-align: center;
+}
