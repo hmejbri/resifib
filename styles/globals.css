@@ -33,7 +33,7 @@
 .description {
 	margin-top: -1em;
 	word-wrap: break-word;
-	width: 100%;
+	width: 90%;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	display: -webkit-box;
