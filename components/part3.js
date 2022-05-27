@@ -9,6 +9,7 @@ export default function Part3({ refCat, refProd }) {
 	const [categorie, setCategorie] = useState();
 	const [isIntersecting, setIntersecting] = useState(false);
 	const [loading, setLoading] = useState(false);
+	const [currentPage, setCurrentPage] = useState(1);
 	const ref = useRef();
 	const nbProduits = 10;
 
@@ -24,7 +25,7 @@ export default function Part3({ refCat, refProd }) {
 
 			const result = await response.json();
 			setAllProduits(result);
-			setProduits(result.slice(0, nbProduits));
+			setProduits(result);
 		};
 
 		prodFetch();
@@ -42,8 +43,16 @@ export default function Part3({ refCat, refProd }) {
 	}, []);
 
 	const handleCategorie = (cat) => {
-		if (categorie == cat) setCategorie();
-		else setCategorie(cat);
+		setCurrentPage(1);
+
+		if (categorie == cat) {
+			setProduits(allProduits);
+			setCategorie();
+		} else {
+			const tmp = allProduits.filter((val) => val.categorie.trim() == cat);
+			setProduits(tmp);
+			setCategorie(cat);
+		}
 		refProd.current.scrollIntoView({ behavior: "smooth", block: "center" });
 
 		setLoading(true);
@@ -54,9 +63,14 @@ export default function Part3({ refCat, refProd }) {
 	};
 
 	const changePage = (event, value) => {
-		setProduits(
-			allProduits.slice((value - 1) * nbProduits, (value - 1) * nbProduits + nbProduits)
-		);
+		setCurrentPage(value);
+		refProd.current.scrollIntoView({ behavior: "smooth", block: "center" });
+
+		setLoading(true);
+
+		setTimeout(() => {
+			setLoading(false);
+		}, 100);
 	};
 
 	return (
@@ -187,53 +201,54 @@ export default function Part3({ refCat, refProd }) {
 					<CircularProgress />
 				</center>
 			) : (
-				<Zoom in={isIntersecting} style={{ transitionDelay: "300ms" }}>
-					<Container maxWidth="md">
+				<Container maxWidth="md">
+					<Zoom in={isIntersecting} style={{ transitionDelay: "100ms" }}>
 						<Grid container>
-							{produits.map((val, index) => {
-								return (
-									<>
-										{categorie && val.categorie.trim() !== categorie ? (
-											""
-										) : (
-											<>
-												<Grid
-													item
-													md={4}
-													xs={12}
-													sx={{
-														marginLeft: {
-															xs: "20%",
-															sm: "30%",
-															md: "0%",
-														},
-													}}
-												>
-													<CardProduit data={val} />
-													<br />
-												</Grid>
+							{produits
+								.slice(
+									(currentPage - 1) * nbProduits,
+									(currentPage - 1) * nbProduits + nbProduits
+								)
+								.map((val, index) => {
+									return (
+										<>
+											<Grid
+												item
+												md={4}
+												xs={12}
+												sx={{
+													marginLeft: {
+														xs: "20%",
+														sm: "30%",
+														md: "0%",
+													},
+												}}
+											>
+												<CardProduit data={val} />
+												<br />
+											</Grid>
 
-												{index == 0 || index % 2 == 0 ? (
-													<Grid item md={4}></Grid>
-												) : (
-													""
-												)}
-											</>
-										)}
-									</>
-								);
-							})}
+											{index == 0 || index % 2 == 0 ? (
+												<Grid item md={4}></Grid>
+											) : (
+												""
+											)}
+										</>
+									);
+								})}
 						</Grid>
-						<br />
-						<div style={{ display: "flex", justifyContent: "center" }}>
-							<Pagination
-								color="primary"
-								count={Math.ceil(allProduits.length / nbProduits)}
-								onChange={changePage}
-							/>
-						</div>
-					</Container>
-				</Zoom>
+					</Zoom>
+
+					<br />
+					<div style={{ display: "flex", justifyContent: "center" }}>
+						<Pagination
+							color="primary"
+							defaultPage={currentPage}
+							count={Math.ceil(produits.length / nbProduits)}
+							onChange={changePage}
+						/>
+					</div>
+				</Container>
 			)}
 		</div>
 	);
