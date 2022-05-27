@@ -30,7 +30,9 @@ const ResponsiveAppBar = ({ refCat, refProd }) => {
 	};
 
 	return (
-		<AppBar style={{ backgroundColor: "rgba(0,0,0,0)", position: "absolute" }}>
+		<AppBar
+			style={{ backgroundColor: "rgba(0,0,0,0)", position: "absolute" }}
+		>
 			<Container maxWidth="xl">
 				<Toolbar disableGutters>
 					<Typography
@@ -91,7 +93,9 @@ const ResponsiveAppBar = ({ refCat, refProd }) => {
 									window.scrollTo(0, 0);
 								}}
 							>
-								<Typography textAlign="center">Accueil</Typography>
+								<Typography textAlign="center">
+									Accueil
+								</Typography>
 							</MenuItem>
 							<MenuItem
 								key="Catégories"
@@ -100,7 +104,9 @@ const ResponsiveAppBar = ({ refCat, refProd }) => {
 									scrollToCategories();
 								}}
 							>
-								<Typography textAlign="center">Catégories</Typography>
+								<Typography textAlign="center">
+									Catégories
+								</Typography>
 							</MenuItem>
 							<MenuItem
 								key="Produits"
@@ -109,7 +115,9 @@ const ResponsiveAppBar = ({ refCat, refProd }) => {
 									scrollToProduits();
 								}}
 							>
-								<Typography textAlign="center">Produits</Typography>
+								<Typography textAlign="center">
+									Produits
+								</Typography>
 							</MenuItem>
 						</Menu>
 					</Box>

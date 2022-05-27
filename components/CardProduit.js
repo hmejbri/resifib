@@ -107,7 +107,10 @@ export default function CardProduit({ data }) {
 							<Button
 								onClick={handleOpen}
 								variant="contained"
-								style={{ marginTop: "-0.5em" }}
+								style={{
+									marginTop: "-0.5em",
+									backgroundColor: "#187025",
+								}}
 							>
 								Voir plus..
 							</Button>
@@ -128,7 +131,9 @@ export default function CardProduit({ data }) {
 											src={data.url[0]}
 										></img>
 
-										<Typography sx={{ mt: 2 }}>{data.description}</Typography>
+										<Typography sx={{ mt: 2 }}>
+											{data.description}
+										</Typography>
 									</center>
 								</Box>
 							</Modal>

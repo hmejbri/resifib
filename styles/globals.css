@@ -79,7 +79,12 @@ h1 {
 	left: 0;
 	bottom: 0;
 	width: 100%;
-	background-color: #232a64;
+	background: rgb(24, 112, 37);
+	background: linear-gradient(
+		90deg,
+		rgba(1, 176, 117, 1) 0%,
+		rgba(24, 112, 37, 1) 95%
+	);
 	color: white;
 	text-align: center;
 }
