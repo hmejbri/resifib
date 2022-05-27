@@ -107,7 +107,7 @@ export default function CardProduit({ data }) {
 							<Button
 								onClick={handleOpen}
 								variant="contained"
-								style={{ marginTop: "-0.5em" }}
+								style={{ position: "absolute", bottom: 10 }}
 							>
 								Voir plus..
 							</Button>

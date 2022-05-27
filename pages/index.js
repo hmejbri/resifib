@@ -1,3 +1,4 @@
+import Head from "next/head";
 import React, { useRef } from "react";
 import Footer from "../components/footer";
 import ResponsiveAppBar from "../components/Navbar";
@@ -10,6 +11,10 @@ export default function Home() {
 
 	return (
 		<div id="body">
+			<Head>
+				<title>Resifib</title>
+				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+			</Head>
 			<ResponsiveAppBar refCat={refCat} refProd={refProd} />
 
 			<Part2 />
