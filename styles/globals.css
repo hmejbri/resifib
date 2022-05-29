@@ -73,12 +73,9 @@ h1 {
 	left: 0;
 	bottom: 0;
 	width: 100%;
-	background: rgb(24, 112, 37);
-	background: linear-gradient(
-		90deg,
-		rgba(1, 176, 117, 1) 0%,
-		rgba(24, 112, 37, 1) 95%
-	);
-	color: white;
 	text-align: center;
+	color: "black";
+	background: url("https://img.freepik.com/photos-gratuite/fond-texture-marbre-or-blanc-haute-resolution_38607-589.jpg");
+	filter: blur(2px);
+	-webkit-filter: blur(2px);
 }
