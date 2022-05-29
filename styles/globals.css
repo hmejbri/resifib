@@ -3,14 +3,8 @@
 }
 
 .category:hover {
-	transition: all 1s;
-	margin-top: -1em;
+	opacity: 0.6;
 	cursor: pointer;
-}
-
-.category:not(hover) {
-	transition: all 1s;
-	margin-top: 0em;
 }
 
 .clickedCat {

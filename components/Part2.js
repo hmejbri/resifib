@@ -12,7 +12,12 @@ export default function Part2() {
 			parallaxOffset={10}
 		>
 			<center>
-				<Typography variant="h1" component="div" gutterBottom style={{ color: "white" }}>
+				<Typography
+					variant="h1"
+					component="div"
+					gutterBottom
+					style={{ color: "white" }}
+				>
 					R
 					<Typography
 						variant="h1"
@@ -38,13 +43,41 @@ export default function Part2() {
 					variant="h6"
 					component="div"
 					gutterBottom
+					style={{
+						maxWidth: "80%",
+						color: "white",
+						display: "inline",
+					}}
+				>
+					Vous avez une idée que nous exécutons pour un résultat
+				</Typography>
+
+				<br />
+				<Typography
+					variant="h4"
+					component="div"
+					gutterBottom
+					style={{
+						maxWidth: "80%",
+						color: "#36ff6b",
+						display: "inline",
+					}}
+				>
+					DESSINE TON AVENIR
+				</Typography>
+				<br />
+
+				<Typography
+					variant="h6"
+					component="div"
+					gutterBottom
 					style={{ maxWidth: "80%", color: "white" }}
 				>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec convallis ex
-					nunc, quis tincidunt lectus porta vitae. Curabitur ultricies suscipit tempor.
-					Aenean aliquam ornare mi nec interdum. Vestibulum et ipsum in sem congue
-					accumsan. In hac habitasse platea dictumst. Duis porta urna eu erat euismod
-					interdum.
+					Du concept à la production, nous sommes en mesure de
+					produire votre premier prototype et nous avons les outils et
+					les connaissances nécessaires pour donner vie à votre
+					prochain projet d'idée de conception. Nous coordonnons
+					chaque aspect de votre prochain prototype.
 				</Typography>
 			</center>
 		</LazyHero>
