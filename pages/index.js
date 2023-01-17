@@ -1,6 +1,5 @@
 import Head from "next/head";
 import React, { useRef } from "react";
-import Footer from "../components/footer";
 import ResponsiveAppBar from "../components/Navbar";
 import Part2 from "../components/Part2";
 import Part3 from "../components/part3";
@@ -31,8 +30,6 @@ export default function Home() {
 			</div>
 
 			<br />
-
-			<Footer></Footer>
 		</div>
 	);
 }
