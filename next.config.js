@@ -5,7 +5,7 @@ const nextConfig = {
 		domains: ["res.cloudinary.com", "localhost:3000"],
 	},
 	env: {
-		API: "https://resifib-dashboard.herokuapp.com/api/",
+		API: "https://resifib.cyclic.app/api/",
 	},
 };
 
