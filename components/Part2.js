@@ -76,7 +76,7 @@ export default function Part2() {
 					Du concept à la production, nous sommes en mesure de
 					produire votre premier prototype et nous avons les outils et
 					les connaissances nécessaires pour donner vie à votre
-					prochain projet d'idée de conception. Nous coordonnons
+					prochain projet d&apos;idée de conception. Nous coordonnons
 					chaque aspect de votre prochain prototype.
 				</Typography>
 			</center>
