@@ -44,8 +44,6 @@ export default function Part3({ refCat, refProd }) {
 	};
 
 	useEffect(() => {
-		prodFetch();
-
 		const observer = new IntersectionObserver(([entry], observer) => {
 			setIntersecting(entry.isIntersecting);
 			if (entry.intersectionRatio > 0) observer.unobserve(ref.current);
@@ -56,7 +54,11 @@ export default function Part3({ refCat, refProd }) {
 		return () => {
 			observer.disconnect();
 		};
-	}, [isIntersecting]);
+	}, []);
+
+	useEffect(() => {
+		prodFetch();
+	}, [produits]);
 
 	const handleCategorie = (cat) => {
 		setCurrentPage(1);
