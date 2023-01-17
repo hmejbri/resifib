@@ -56,7 +56,7 @@ export default function Part3({ refCat, refProd }) {
 		return () => {
 			observer.disconnect();
 		};
-	}, []);
+	}, [isIntersecting]);
 
 	const handleCategorie = (cat) => {
 		setCurrentPage(1);
