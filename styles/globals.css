@@ -1,0 +1,81 @@
+#body {
+	background-color: #f6f3f3;
+}
+
+.category:hover {
+	opacity: 0.6;
+	cursor: pointer;
+}
+
+.clickedCat {
+	cursor: pointer;
+}
+
+.blurryCat {
+	filter: blur(4px);
+	-webkit-filter: blur(4px);
+	transition: all 1s;
+}
+
+.blurryCat:hover {
+	filter: blur(0px);
+	cursor: pointer;
+	-webkit-filter: blur(0px);
+	transition: all 0.3s;
+}
+
+.description {
+	margin-top: -1em;
+	word-wrap: break-word;
+	width: 90%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 3; /* number of lines to show */
+	line-clamp: 3;
+	-webkit-box-orient: vertical;
+}
+
+.cardImage:hover,
+.cardPaper:hover {
+	transition: all 1s;
+	transform: scale(1.08);
+	cursor: pointer;
+}
+
+.cardImage:not(hover),
+.cardPaper:not(hover) {
+	transition: all 1s;
+	transform: scale(1);
+}
+
+.nomProduit {
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 1; /* number of lines to show */
+	line-clamp: 1;
+	-webkit-box-orient: vertical;
+}
+
+h1 {
+	color: #000000;
+	font-family: "Raleway", sans-serif;
+	font-size: 62px;
+	font-weight: 800;
+	line-height: 72px;
+	margin: 0 0 24px;
+	text-align: center;
+	text-transform: uppercase;
+}
+.footer {
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+	color: "black";
+	background: url("https://img.freepik.com/photos-gratuite/fond-texture-marbre-or-blanc-haute-resolution_38607-589.jpg");
+	filter: blur(2px);
+	-webkit-filter: blur(2px);
+}
