@@ -1,11 +1,4 @@
-import {
-	Avatar,
-	CircularProgress,
-	Container,
-	Grid,
-	Pagination,
-	Zoom,
-} from "@mui/material";
+import { Avatar, CircularProgress, Container, Grid, Pagination, Zoom } from "@mui/material";
 import React, { useState, useRef, useEffect } from "react";
 import { Card, ListGroup } from "react-bootstrap";
 import CardProduit from "./CardProduit";
@@ -30,21 +23,27 @@ export default function Part3({ refCat, refProd }) {
 	const ref = useRef();
 	const nbProduits = 10;
 
-	useEffect(() => {
-		const prodFetch = async () => {
-			const response = await fetch(process.env.API + "produits", {
-				method: "GET",
-				headers: {
-					"Content-Type": "application/json",
-					Accept: "application/json",
-				},
+	const prodFetch = async () => {
+		await fetch(process.env.API + "produits", {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+				Accept: "application/json",
+			},
+		})
+			.catch((err) => {
+				console.log(err);
+			})
+			.then(async (response) => {
+				if (response) {
+					const result = await response.json();
+					setAllProduits(result);
+					setProduits(result);
+				}
 			});
+	};
 
-			const result = await response.json();
-			setAllProduits(result);
-			setProduits(result);
-		};
-
+	useEffect(() => {
 		prodFetch();
 
 		const observer = new IntersectionObserver(([entry], observer) => {
@@ -66,9 +65,7 @@ export default function Part3({ refCat, refProd }) {
 			setProduits(allProduits);
 			setCategorie();
 		} else {
-			const tmp = allProduits.filter(
-				(val) => val.categorie.trim() == cat
-			);
+			const tmp = allProduits.filter((val) => val.categorie.trim() == cat);
 			setProduits(tmp);
 			setCategorie(cat);
 		}
@@ -97,11 +94,7 @@ export default function Part3({ refCat, refProd }) {
 			<center>
 				<Grid container style={{ marginBottom: "5em" }} ref={refCat}>
 					<Grid item xs={6} md={4}>
-						<Zoom
-							ref={ref}
-							in={isIntersecting}
-							style={{ transitionDelay: "100ms" }}
-						>
+						<Zoom ref={ref} in={isIntersecting} style={{ transitionDelay: "100ms" }}>
 							<Avatar
 								sx={{
 									width: { xs: "120px", md: "200px" },
@@ -115,19 +108,14 @@ export default function Part3({ refCat, refProd }) {
 											: "blurryCat"
 										: "category"
 								}
-								onClick={() =>
-									handleCategorie("POTS DE FLEURS")
-								}
+								onClick={() => handleCategorie("POTS DE FLEURS")}
 							/>
 						</Zoom>
 						<br />
 						<h6>POTS DE FLEURS</h6>
 					</Grid>
 					<Grid item xs={6} md={4}>
-						<Zoom
-							in={isIntersecting}
-							style={{ transitionDelay: "300ms" }}
-						>
+						<Zoom in={isIntersecting} style={{ transitionDelay: "300ms" }}>
 							<Avatar
 								sx={{
 									width: { xs: "120px", md: "200px" },
@@ -141,9 +129,7 @@ export default function Part3({ refCat, refProd }) {
 											: "blurryCat"
 										: "category"
 								}
-								onClick={() =>
-									handleCategorie("ÉSPACES ÉLÉGANTS")
-								}
+								onClick={() => handleCategorie("ÉSPACES ÉLÉGANTS")}
 							/>
 						</Zoom>
 						<br />
@@ -151,10 +137,7 @@ export default function Part3({ refCat, refProd }) {
 					</Grid>
 
 					<Grid item xs={6} md={4}>
-						<Zoom
-							in={isIntersecting}
-							style={{ transitionDelay: "500ms" }}
-						>
+						<Zoom in={isIntersecting} style={{ transitionDelay: "500ms" }}>
 							<Avatar
 								sx={{
 									width: { xs: "120px", md: "200px" },
@@ -168,20 +151,14 @@ export default function Part3({ refCat, refProd }) {
 											: "blurryCat"
 										: "category"
 								}
-								onClick={() =>
-									handleCategorie("ÉVIER DE CUISINE")
-								}
+								onClick={() => handleCategorie("ÉVIER DE CUISINE")}
 							/>
 						</Zoom>
 						<br />
 						<h6>ÉVIER DE CUISINE </h6>
 					</Grid>
 					<Grid item xs={6} md={4}>
-						<Zoom
-							ref={ref}
-							in={isIntersecting}
-							style={{ transitionDelay: "700ms" }}
-						>
+						<Zoom ref={ref} in={isIntersecting} style={{ transitionDelay: "700ms" }}>
 							<Avatar
 								sx={{
 									width: { xs: "120px", md: "200px" },
@@ -190,27 +167,19 @@ export default function Part3({ refCat, refProd }) {
 								src="https://i.ibb.co/Nm6Dfhm/1.jpg"
 								className={
 									categorie
-										? categorie ==
-										  "REVETEMENT POUR SOL ET MUR"
+										? categorie == "REVETEMENT POUR SOL ET MUR"
 											? "clickedCat"
 											: "blurryCat"
 										: "category"
 								}
-								onClick={() =>
-									handleCategorie(
-										"REVETEMENT POUR SOL ET MUR"
-									)
-								}
+								onClick={() => handleCategorie("REVETEMENT POUR SOL ET MUR")}
 							/>
 						</Zoom>
 						<br />
 						<h6>REVETEMENT POUR SOL ET MUR</h6>
 					</Grid>
 					<Grid item xs={6} md={4}>
-						<Zoom
-							in={isIntersecting}
-							style={{ transitionDelay: "900ms" }}
-						>
+						<Zoom in={isIntersecting} style={{ transitionDelay: "900ms" }}>
 							<Avatar
 								sx={{
 									width: { xs: "120px", md: "200px" },
@@ -233,17 +202,11 @@ export default function Part3({ refCat, refProd }) {
 							/>
 						</Zoom>
 						<br />
-						<h6>
-							PRODUITS EN POLYMÈRE RENFORCÉ ET FIBRE DE VERRE
-							(FRP)
-						</h6>
+						<h6>PRODUITS EN POLYMÈRE RENFORCÉ ET FIBRE DE VERRE (FRP)</h6>
 					</Grid>
 
 					<Grid item xs={6} md={4}>
-						<Zoom
-							in={isIntersecting}
-							style={{ transitionDelay: "1100ms" }}
-						>
+						<Zoom in={isIntersecting} style={{ transitionDelay: "1100ms" }}>
 							<Avatar
 								sx={{
 									width: { xs: "120px", md: "200px" },
@@ -257,9 +220,7 @@ export default function Part3({ refCat, refProd }) {
 											: "blurryCat"
 										: "category"
 								}
-								onClick={() =>
-									handleCategorie("PLAN DE TRAVAIL GRANIT")
-								}
+								onClick={() => handleCategorie("PLAN DE TRAVAIL GRANIT")}
 							/>
 						</Zoom>
 						<br />
@@ -282,10 +243,7 @@ export default function Part3({ refCat, refProd }) {
 				</center>
 			) : (
 				<Container maxWidth="md">
-					<Zoom
-						in={isIntersecting}
-						style={{ transitionDelay: "100ms" }}
-					>
+					<Zoom in={isIntersecting} style={{ transitionDelay: "100ms" }}>
 						<Grid container>
 							{produits
 								.slice(
